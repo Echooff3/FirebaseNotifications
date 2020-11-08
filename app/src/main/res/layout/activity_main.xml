@@ -45,7 +45,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Enter Title"
+        android:hint="Your Name"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/etMessage"
         app:layout_constraintEnd_toStartOf="@+id/btnSend"

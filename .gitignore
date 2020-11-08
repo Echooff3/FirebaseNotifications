@@ -12,3 +12,5 @@
 /captures
 .externalNativeBuild
 .cxx
+/app/src/main/java/com/androiddevs/firebasenotifications/PrivateConstants.kt
+/app/google-services.json

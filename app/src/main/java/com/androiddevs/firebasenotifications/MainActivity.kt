@@ -3,7 +3,9 @@ package com.androiddevs.firebasenotifications
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextWatcher
 import android.util.Log
+import androidx.core.widget.doOnTextChanged
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.gson.Gson
@@ -26,6 +28,12 @@ class MainActivity : AppCompatActivity() {
             FirebaseService.token = it.token
             etToken.setText(it.token)
         }
+
+        etTitle.setText(FirebaseService.uName)
+        etTitle.doOnTextChanged { text, _, _, _ -> FirebaseService.uName =
+            text.toString()
+        }
+
         FirebaseMessaging.getInstance().subscribeToTopic(TOPIC)
 
         btnSend.setOnClickListener {
@@ -34,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             val recipientToken = etToken.text.toString()
             if(title.isNotEmpty() && message.isNotEmpty() && recipientToken.isNotEmpty()) {
                 PushNotification(
-                        NotificationData(title, message),
+                        NotificationData("$title says", message),
                         recipientToken
                 ).also {
                     sendNotification(it)
