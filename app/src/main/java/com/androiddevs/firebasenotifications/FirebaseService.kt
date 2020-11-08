@@ -10,6 +10,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -18,8 +19,9 @@ import kotlin.random.Random
 
 private const val CHANNEL_ID = "my_channel"
 
-class FirebaseService : FirebaseMessagingService() {
 
+class FirebaseService : FirebaseMessagingService() {
+    private val TAG ="FMS"
     companion object {
         var sharedPref: SharedPreferences? = null
 
